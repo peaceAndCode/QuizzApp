@@ -4,12 +4,10 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
-import java.io.Serializable;
-
+@Data
 @AllArgsConstructor
 @EqualsAndHashCode
-@Data
-public class GamePlayerId implements Serializable {
+public class PlayerAnswerId {
     private Long playerId;
-    private Long gameId;
+    private Long answerId;
 }

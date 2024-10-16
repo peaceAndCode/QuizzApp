@@ -1,8 +1,7 @@
 package com.peaceandcode.quizapp.entity;
 
-import com.peaceandcode.quizapp.compositekey.GamePlayerId;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -13,25 +12,24 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 import java.sql.Timestamp;
 
-@Entity(name = "game_players")
-@Data
+@Entity
 @AllArgsConstructor
 @NoArgsConstructor
-public class GamePlayers {
-    @EmbeddedId
-    private GamePlayerId id;
+@Data
+public class Answer {
+    @Id
+    @GeneratedValue(generator = "answer_sequence",strategy = GenerationType.SEQUENCE)
+    @SequenceGenerator(name = "answer_sequence", sequenceName = "answer_sequence", allocationSize = 1)
+    private Long id;
+    @NotBlank
+    private String text;
+    private Boolean correct=false;
     @ManyToOne
-    @JoinColumn(name = "player_user_id")
+    @JoinColumn(name = "question_id")
     @OnDelete(action = OnDeleteAction.CASCADE)
-    private User user;
-    @ManyToOne
-    @JoinColumn(name = "game_id")
-    @OnDelete(action = OnDeleteAction.CASCADE)
-    private Game game;
-    @NotNull
-    private Long insertionOrder;
+    private Question question;
     @CreationTimestamp
-    private Timestamp createdAt;
+    Timestamp createdAt;
     @UpdateTimestamp
-    private Timestamp updatedAt;
+    Timestamp updatedAt;
 }
