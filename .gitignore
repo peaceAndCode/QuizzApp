@@ -1,3 +1,11 @@
 
 ###Spring boot files###
 /src/main/resources/application.properties
+
+###Config files/folders###
+.idea/
+.obsidian/
+
+
+###Compiled files folder###
+.target/
