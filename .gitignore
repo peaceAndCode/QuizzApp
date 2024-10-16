@@ -5,7 +5,8 @@
 ###Config files/folders###
 .idea/
 .obsidian/
-
+src/main/resources/application.properties
 
 ###Compiled files folder###
 target/
+
