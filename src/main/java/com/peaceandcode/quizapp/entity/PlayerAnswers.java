@@ -1,10 +1,7 @@
 package com.peaceandcode.quizapp.entity;
 
 import com.peaceandcode.quizapp.compositekey.PlayerAnswerId;
-import jakarta.persistence.EmbeddedId;
-import jakarta.persistence.Entity;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -24,10 +21,12 @@ public class PlayerAnswers {
     @EmbeddedId
     private PlayerAnswerId id;
     @ManyToOne
+    @MapsId("playerId")
     @JoinColumn(name = "player_id")
     @OnDelete(action = OnDeleteAction.CASCADE)
     private User user;
     @ManyToOne
+    @MapsId("answerId")
     @JoinColumn(name = "answer_id")
     @OnDelete(action = OnDeleteAction.CASCADE)
     private Answer answer;

@@ -21,10 +21,12 @@ public class GamePlayers {
     @EmbeddedId
     private GamePlayerId id;
     @ManyToOne
+    @MapsId("playerId")
     @JoinColumn(name = "player_user_id")
     @OnDelete(action = OnDeleteAction.CASCADE)
     private User user;
     @ManyToOne
+    @MapsId("gameId")
     @JoinColumn(name = "game_id")
     @OnDelete(action = OnDeleteAction.CASCADE)
     private Game game;

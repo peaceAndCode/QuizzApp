@@ -1,5 +1,6 @@
 package com.peaceandcode.quizapp.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.peaceandcode.quizapp.constant.Role;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
@@ -37,7 +38,7 @@ public class User implements UserDetails {
     @Pattern(regexp = "^[a-zA-Z][a-zA-Z0-9_-]{4,20}$", message = "Invalid username")
     private String username;
     @NotBlank
-    @Pattern(regexp = "^(?=.*[A-Z])(?=.*[a-z])(?=.*\\d)(?=.*[!@#$%^&*(),.?\":{}|<>]).{8,}$",message = "invalid password")
+    @JsonIgnore
     private String password;
     @NotBlank
     @Size(min = passCodeLength, max = passCodeLength)
